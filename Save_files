@@ -1,0 +1,40 @@
+def save_game(name, race, job):
+    save_game = open('savefile1', 'w')
+    print("saving, please wait...")
+    save_game.write(f"name = {name}\n")
+    save_game.write(f"race = {race}\n")
+    save_game.write(f"job = {job}\n")
+    save_game.close()
+    print("Save complete!")
+    
+def start_game(name, race, job):
+    print(""""Greetings traveler! I'm Greg, and I would like too welcome you too our humble village, Honeywood!
+    Tell me, what is your name?""")
+    name = input('> ')
+    print("Ah, now that's a unique name! What race are you?")
+    race = input('> ')
+    print("""Well that explains it! been more than a decade since we've had one of your kind here.")
+Anyhow! I'm sure you need a place too stay for the night, the honeywood inn is just down the road, can't miss it!
+Do you have money for your board?""")
+    work = False
+    while work == False:
+        cash = input('> ').lower()
+        if cash == 'yes' or cash == 'y':
+            print("Ah! of course a strong adventurer like yourself has that covered! Good day too you!")
+            work = True
+            job = 'none'
+        elif cash == 'no' or cash == 'n':
+            work = True
+            print("""Well in that case, a few of my sheep seem too have run amok,
+            if you could get them back I'll pay your board!""")
+            job = 'gregs_sheep'
+        else:
+            print("I'm sorry is that some native language?")
+    return(name, race, job)
+
+name = 'blank'
+race = 'blank'
+job = 'none'
+
+start_game(name, race, job)
+save_game(name, race, job)
